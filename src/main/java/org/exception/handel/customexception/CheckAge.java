@@ -8,31 +8,30 @@ public class CheckAge {
     }
 
     public void checkAge() {
-        if (isValidNumber(this.age)) {
-            if (this.age > 18) {
-                System.out.println("Candidate can vote");
-            } else {
-                System.out.println("Candidate can not vote");
+        try {
+            if (isValidNumber(this.age)) {
                 try {
-                    throw new AgeValidateException("This not valid age");
+                    if (this.age > 18) {
+                        System.out.println("Candidate can vote");
+                    } else {
+                        throw new AgeValidateException();
+                    }
+
                 } catch (AgeValidateException ex) {
                     System.out.println(ex.getMessage());
                 }
 
             }
-        }
-    }
-
-    public boolean isValidNumber(int age) {
-        try {
-            if ((int) age == age) {
-                return true;
-            } else throw new AgeValidateException("This not a number");
-        } catch (Exception e) {
+        } catch (NumberFormatException | AgeValidateException e) {
             System.out.println(e.getMessage());
-            return false;
         }
     }
 
-
+    public boolean isValidNumber(Object age) throws AgeValidateException  {
+        if (age instanceof Integer) {
+            return true;
+        } else {
+            throw new AgeValidateException("The input is not a valid number for age");
+        }
+    }
 }
