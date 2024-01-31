@@ -19,11 +19,15 @@ public class PropertiesDemo {
             String username = properties.getProperty("database.username");
             String password = properties.getProperty("database.password");
             String port = properties.getProperty("port");
+            String serverHost = properties.getProperty("server.host");
+            String serverPort = properties.getProperty("server.port");
 
             System.out.println("URL: " + url);
             System.out.println("Username: " + username);
             System.out.println("Password: " + password);
             System.out.println("Port: " + port);
+            System.out.println("Server Host: " + serverHost);
+            System.out.println("Server Port: " + serverPort);
 
 
         } catch (IOException ex) {
