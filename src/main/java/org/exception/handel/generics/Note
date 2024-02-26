@@ -1,0 +1,67 @@
+
+
+Bounded & unbounded type safety
+
+    - We can bound a type parameter particular range using extends keywords such type are called bounded types
+    - class Test<T>{} as a type parameter we can pass any type there are no restriction hence its is unbounded type
+    - Test<Integer> t1= new Test<Integer>
+    - Test<String> t1= new Test<String>
+
+    class Test<T extends Number>{
+            // valid
+    }
+    class Test <T implements Runnable>{ // if you will see implements happly we can change it to extends
+        // Not valid
+    }
+
+    - Syntax for bounded type
+            class Test <T extends X>{
+
+            }
+            X - can be either Class or Interface , if x is a class parameter we can pass x class or child classes.
+            X - is an interface as type parameter either X type or its implementation classes
+
+public class GenericsDemo<T extends Number> { } // it will allow Number and its child class
+
+if we want to use multiple class extends we need to use & operator
+public class GenericsDemo<T extends Number & Runnable> { } // it will allow Number and its child class
+    - its meas it allow to cast child class of Number and implements child class of runnable
+
+class x extends a implements b // valid because class should be extends first then implements any class
+class x implements b extends a // Not valid if class implements first
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Note
+    -   We can define bounded types only by using extends keyword and we
+    -   We cant use implements and supper key words but we can replace implements key words with extends key word.
+    -   As type parameter <T> we can take any value as java identifier but it convince to use T
+        class Test<T>{ } valid
+        class Test<E>{ } valid
+
+    -   is it to take multiple type parameter ? Yes we can use as per our requirements
+        class HashMap<K, V> { } K is type key and V is type of value type
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Wildcard <?> character in generic
+    ArrayList<String> students = new ArrayList<>();
+        -   We can call this method by passing arrayList of only String type
+        -   But with in the methods we can add only string type of object to the list
+        -   if by mistake if we try to add any other type of value then we will get compile time Error
+        -
+    ArrayList<?> students = new ArrayList<>();
+        -   This type of methods are best suitable for read only
+
+    ArrayList<? extends Number> students = new ArrayList<>();
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Generic Methods
+    -   class Test<T> we can use T with in this class based on our requirements
+    -   We can declare type parameter either at class label or method label
+    Declaring type parameter at class label
+        - class test<T> we can use T with in our requirements
+      Declaring type parameter at method label
+        - We have to declare type parameter just before return type
+          public <T> void functionName(){ }
+The main purpose is ti provide type safty and resolve type casting problem.
+    - GENERIC concept also applicable on at compile time not in run time
+
+

@@ -1,0 +1,84 @@
+## Garbage collection
+
+ -  Introduction
+ -  The way to make eligible for GC
+ -  Finalization
+
+ What GC
+ ================================================
+    - The GC always run in background to destroy unused or no longer used object & variable etc
+    - Usually programmer creating object and negating destroying useless object because of user negligence in certain point sufficient memory may not be available
+    - Due to this problem out of memory is very common problem in C++ like programming
+    - The GC also called as demon thread because it's always runs under in background of java program
+
+The ways to make an object eligible to GC
+=================================================
+ -  if the object does not contain any reference variable that object is eligible for GC
+ -  There are 4 way to create GC
+    - 1. IF the object not required for longtime assign Null to the variable then it automatically eligible for GC.
+            This approach is called Nullifying the reference variable
+            Student s1= new Student();
+            s1 = null
+    - 2. Student s1 = new Student();
+         Student s2 = new Student()
+         No object eligible for GC
+
+         s2 = s1 // Reassigning the reference variable
+         Here s1- is eligible for GC
+
+         Re assigning the reference variable to some other object the old object is eligible for the GC.
+
+    - 3. Objects created inside a method
+            -   The object which are create inside method are by default eligible for GC, once method complete
+                class Test{
+                    m1()
+                    }
+                    public static m1(){
+                    Student s1 = new Student()
+                    }
+
+     - 4. iland of isolation
+        if all reference of a object is internal reference on that case we can consider as a iland of isolation GC
+            class Test{
+                Test i;
+            }
+     ==========================================================================
+     The methods for requesting  jvm to run GC
+
+      Once we made an object, it may or may not be destroyed immediately GC
+
+      When ever JVm run GC then only object will destroy but  when JVM GC we cant expect it veried from JVM to JVM
+      instead of waiting until JVM run GC we can request an JVm to run programmatically. but weather JVM request accept or not there is not guaranty
+      for most of the times jVM accept our request.
+
+      The following are two way request JVM to run GC. // what is factory methods
+        -   By using system class, system class contain a static method gc()
+
+        -   By Using Runtime class , Java application can communicate with JVM by using runtime object.
+            gc() request JVM to run garbage collection
+            runtime class present in java.lang pkg and it is a single ton class, we can create runtime object using run time method
+
+            Ex. Runtime r= Runtime.getRuntime()
+                        r.freeMemory() it return number of bytes of free memory present in the heap
+                        r.totalMemory() it return number of bytes if total memory . present on the heap that is heap size.
+
+
+
+ =========================================================================================
+finalization
+
+The clean up activities can be handel by finalization method before object destroy.GC call finalization method to cleanup object
+ -  finalization method present in object class . protected void finalization() throws throwable{}
+ -  we can over ride finalization method on our class to define clean up activities
+
+case: 1
+
+
+
+
+
+
+
+
+
+

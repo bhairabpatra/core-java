@@ -1,0 +1,18 @@
+FIle g1 = new File("abc.text)
+This line wont create any physical file names with abc.text will not exist
+
+So, how to create a file
+f1.createNewFile(); - this method used to create a file with abc.txt
+to validate the file - f1.exists()
+We can use java file also directory also
+ - in unix everything is treated a as file . java I/O implements based on unix OS. hence java file object can be used to represent both file and directer.
+
+- If the specified file is not already available all above constitute create that file.
+
+    FileWriter class contains three method
+        -   write()
+        -   write(char[] ch)
+        -   write(String c)
+        -   Flush
+        -   Close
+

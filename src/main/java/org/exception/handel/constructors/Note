@@ -1,0 +1,5 @@
+Rules for constructor
+    - No return type will consider for the constructor even void als noe used
+
+    - If we write void to the constructor its treat as normal function with void return
+    -
